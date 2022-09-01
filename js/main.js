@@ -160,7 +160,7 @@ do {
             precio = 50;
             break;
         default:
-            alert('Elegir entre una de los 3 varietales posibles');
+            alert('Elegir entre uno de los 3 productos posibles');
             precio = 0;
             cantidad = 0;        
     }
