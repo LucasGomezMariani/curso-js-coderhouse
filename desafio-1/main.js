@@ -1,16 +1,16 @@
-let nombre = prompt('Ingrese el nombre:')
+let nombreAlumno = prompt('Ingrese el nombre del alumno/a:')
 
-function promedio(nota1, nota2, nota3) {
-    nota1 = parseInt(prompt('Ingrese la primer nota: '))
-    nota2 = parseInt(prompt('Ingrese la segunda nota: '))
-    nota3 = parseInt(prompt('Ingrese la tercer nota: '))
-    let promedio = (nota1+nota2+nota3) / 3;
+function promedio(calificacion1, calificacion2, calificacion3) {
+    calificacion1 = parseInt(prompt('Ingrese la primer calificación: '))
+    calificacion2 = parseInt(prompt('Ingrese la segunda calificación: '))
+    calificacion3 = parseInt(prompt('Ingrese la tercer calificación: '))
+    let promedio = (calificacion1+calificacion2+calificacion3) / 3;
 
     if (promedio>=6) {
-        alert('Felicitaciones '+nombre+ ' tu nota es '+promedio+' y pasa a estar aprobado!')
+        alert('Felicitaciones '+nombreAlumno+ ' tu calificación es '+promedio+' y pasas a estar aprobado/a!')
         
     } else {
-        alert('Tenemos malas noticias '+nombre+ '\n tu nota es '+ promedio+ ' y no alcanza para que apruebes.')
+        alert('Tenemos malas noticias '+nombreAlumno+ '\n tu calificación es '+ promedio+ ' y no alcanza para que apruebes.')
         
     }
 }
