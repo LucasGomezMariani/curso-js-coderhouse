@@ -209,7 +209,7 @@ function datosAlumno() {
     } while (nombreCorrecto);
 
 
-    promedio(nombreAlumno,calificacion(calificacion1),calificacion(calificacion2),calificacion(calificacion3))
+    promedio(nombreAlumno,calificacion(calificacion1),calificacion(calificacion2),calificacion(calificacion3)) //Al final declare la function (calificacion) y la llame dentro de la llamada de la function promedio, haciendo referencia a que queria que el valor se actualizara dentro de las variables calificacion 1, 2 y 3. 
     
 }
 
@@ -218,13 +218,13 @@ function calificacion (calificacion) {
     let verificacion = true
 
     do {
-        calificacion = Number(prompt('Ingrese la nota de la calificación. Debe ser un numero del 1 - 10: '))
+        calificacion = Number(prompt('Ingrese la nota de la calificación. Debe ser un numero del 1 - 10: ')) // para la validacion de numeros: muy importante poner el number(prompt()) si no, no funciona.
 
         if (calificacion == '' || calificacion<1 || calificacion>10) {
             alert('El numero ingresado es invalido. Pruebe con un numero del 1 - 10')
         } else {
             verificacion = false
-            return calificacion
+            return calificacion //Muy importante habilitar el retur con el nombre de la variable. Para que actualice el valor de la misma en el nivel donde es llamada. 
         }
 
     } while (verificacion);
