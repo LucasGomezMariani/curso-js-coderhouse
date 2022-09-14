@@ -3,7 +3,7 @@ const UsersList = []
 
 
 // Molde de usuarios
-class UserCreate {
+class User {
     constructor(nombre, apellido, email, edad) {
         this.nombre = nombre
         this.apellido = apellido
@@ -19,7 +19,7 @@ class UserCreate {
 function CrearUsuario() {
     do {
         // Algoritmo que crea al usuario
-        const usuario = new UserCreate( getName(), getSurname(), getEmail(), getAge() );
+        const usuario = new User ( getName(), getSurname(), getEmail(), getAge() );
         // console.log(usuario1);
         usuario.presentarme();
         UsersList.push(usuario);
@@ -31,11 +31,7 @@ function CrearUsuario() {
 }
 
 CrearUsuario()
-
-
 console.log(UsersList);
-
-
 
 
 function getName(nombre) {
