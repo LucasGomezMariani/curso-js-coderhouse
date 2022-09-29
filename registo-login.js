@@ -1,6 +1,27 @@
-// El codigo se ejecuta si seleccionamos alguno de los botones de registro
+// Array de usuarios
+let UsersList = [];
+
+// Molde de usuarios
+class User {
+    constructor(nombre, apellido, email, edad, password) {
+        this.nombre = nombre
+        this.apellido = apellido
+        this.email = email
+        this.edad = edad
+        this.password = password
+    }
+    saludar() {
+        alert(`Bienvenidx ${this.nombre}, ahora podras disfrutar de la experiencia completa nuestra web :D`);
+    }
+}
+
+// El codigo se ejecuta si seleccionamos alguno de los botones de registro. 
+// Por ahora solo el boton del header esta config
+
+// Capturamos los botones
 let registrarse = document.querySelector('.login')
 
+// Escuchador del evento
 registrarse.onclick = () => {
     // Capturamos el contenedor
     let form = document.getElementById('registerContainer');
@@ -38,37 +59,17 @@ registrarse.onclick = () => {
     crearUsuario();
 }
 
-// Array de usuarios
-let UsersList = [];
-
-// Molde de usuarios
-class User {
-    constructor(nombre, apellido, email, edad, password) {
-        this.nombre = nombre
-        this.apellido = apellido
-        this.email = email
-        this.edad = edad
-        this.password = password
-    }
-    saludar() {
-        alert(`Bienvenidx ${this.nombre}, ahora podras disfrutar de la experiencia completa nuestra web :D`);
-    }
-}
-
 //REGISTRO
  crearUsuario = () => {
     // 1- capturamos el formulario
     const registerForm = document.getElementById('registerForm');
 
     // 2- Agregamos un event
-    registerForm.addEventListener('submit', cargarDatos);
-    // registerForm.onclick = () => {
-    //     cargarDatos()
-    // }
+    registerForm.addEventListener('submit', capturarDatos);
 }
 
-// 3- Funcion para cargar datos.
-function cargarDatos(e) {
+//Funcion para cargar datos.
+capturarDatos = (e) => {
     // metodo para no recargar la pagina
     e.preventDefault();
 
@@ -93,9 +94,20 @@ function cargarDatos(e) {
     containerForm.classList.add('d-none')
 
     usuario.saludar();
+
+    // Cargamos los datos del usuario en el session storaje en forma de JSON
+    sessionStorage.setItem('Usuarios', JSON.stringify(UsersList));
+
+    // Cambiamos el boton de registro
+    saludarUsuario(nombre);
 }
 
-
+// Cambiar boton
+saludarUsuario = (nombre) => {
+    let registerBtn = document.getElementById('registerBtn');
+    registerBtn.classList.remove('login')
+    registerBtn.innerText = `Bienvenidx ${nombre}`
+}
 
 
 
