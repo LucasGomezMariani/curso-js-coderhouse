@@ -1,75 +1,33 @@
-// Array de usuarios
-let UsersList = [];
 
-// Molde de usuarios
-class User {
-    constructor(nombre, apellido, email, edad, password) {
-        this.nombre = nombre
-        this.apellido = apellido
-        this.email = email
-        this.edad = edad
-        this.password = password
-    }
-    saludar() {
-        alert(`Bienvenidx ${this.nombre}, ahora podras disfrutar de la experiencia completa nuestra web :D`);
-    }
-}
+import { User } from "./objet_constructor.js";
+import { UsersList } from "./usuarios.js";
+
 
 // El codigo se ejecuta si seleccionamos alguno de los botones de registro. 
-// Por ahora solo el boton del header esta config
+// Por ahora solo el boton del header esta configurado
 
 // Capturamos los botones
-let registrarse = document.querySelector('.login')
+const registrarse = document.querySelector('.login')
+// Capturamos el contenedor
+const form = document.getElementById('registerContainer');
 
 // Escuchador del evento
 registrarse.onclick = () => {
-    // Capturamos el contenedor
-    let form = document.getElementById('registerContainer');
-    // Agregamos la clase con estilos
-    form.classList.add('popUpRegister');
-    // renderizamos el formulario de registro
-    form.innerHTML = `<form class="popUpContent d-flex justify-content-center mb-2" action="#" id="registerForm">
-
-    <input type="text" id="first_name" name="first_name" placeholder="First Name"
-        onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required
-        class="single-input-primary mt-4">
-
-    <input type="text" id="last_name" name="last_name" placeholder="Last Name"
-        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required
-        class="single-input-primary mt-4">
-
-    <input type="email" id="email" name="email" placeholder="Email address" onfocus="this.placeholder = ''"
-        onblur="this.placeholder = 'Email address'" required class="single-input-primary mt-4">
-
-    <input type="number" id="age" name="age" placeholder="Age" onfocus="this.placeholder = ''"
-        onblur="this.placeholder = 'Age'" required class="single-input-primary mt-4">
-
-    <input type="password" id="password" name="password" placeholder="Password"
-        onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" required
-        class="single-input-primary mt-4">
-
-    <input type="password" id="confirmPassword" placeholder="Confirm password"
-        onfocus="this.placeholder = ''" onblur="this.placeholder = 'confirm Password'" required
-        class="single-input-primary mt-4">
-
-    <button type="submit" class="genric-btn primary-border mt-4 mb-4">Register</button>
-
-    </form>`
-
+    form.showModal();
     crearUsuario();
 }
 
 //REGISTRO
- crearUsuario = () => {
+const crearUsuario = () => {
     // 1- capturamos el formulario
     const registerForm = document.getElementById('registerForm');
 
-    // 2- Agregamos un event
+    // 2- Agregamos un event y cargamos los datos
     registerForm.addEventListener('submit', capturarDatos);
 }
 
 //Funcion para cargar datos.
-capturarDatos = (e) => {
+const capturarDatos = (e) => {
     // metodo para no recargar la pagina
     e.preventDefault();
 
@@ -82,17 +40,13 @@ capturarDatos = (e) => {
     const password = formulario.get('password');
 
     // cargamos los datos capturados, dentro del molde de usuarios
-    const usuario = new User(nombre, apellido, email, edad, password);
+    const usuario = new User (nombre, apellido, email, edad, password);
 
     // pusheamos el usuario dentro del array
     UsersList.push(usuario);
+    console.log(...UsersList);
 
-    console.log(UsersList);
-
-    // capturamos la seccion y la ocultamos con display: none
-    let containerForm = document.getElementById('registerContainer');
-    containerForm.classList.add('d-none')
-
+    form.close();
     usuario.saludar();
 
     // Cargamos los datos del usuario en el session storaje en forma de JSON
@@ -103,8 +57,8 @@ capturarDatos = (e) => {
 }
 
 // Cambiar boton
-saludarUsuario = (nombre) => {
-    let registerBtn = document.getElementById('registerBtn');
+const saludarUsuario = (nombre) => {
+    const registerBtn = document.getElementById('registerBtn');
     registerBtn.classList.remove('login')
     registerBtn.innerText = `Bienvenidx ${nombre}`
 }

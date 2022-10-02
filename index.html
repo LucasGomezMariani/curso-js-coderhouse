@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="registro.css">
+    <link rel="stylesheet" href="css/registro.css">
 </head>
 
 <body>
@@ -60,8 +60,8 @@
                                             Blog
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="blog.html"> blog</a>
-                                            <a class="dropdown-item" href="single-blog.html">Single blog</a>
+                                            <a class="dropdown-item" href="#"> blog</a>
+                                            <a class="dropdown-item" href="#">Single blog</a>
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -75,11 +75,11 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Contact</a>
+                                        <a class="nav-link" href="#contact">Contact</a>
                                     </li>
                                 </ul>
                             </div>
-                            <button id="registerBtn" class="btn_1 d-none d-sm-block login">Suscribirse</button>
+                            <button id="registerBtn" class="btn_1 d-none d-sm-block login">Registrarse</button>
                         </nav>
                     </div>
                 </div>
@@ -87,9 +87,36 @@
         </header>
         <!-- Header part end-->
 
-        <Section class="" id="registerContainer">
+        <!-- Formulario de registro -->
+        <dialog class="container" id="registerContainer">
+            <form id="registerForm" class="popUpContent d-flex flex-column justify-content-center mb-2 rounded" action="#">
 
-        </Section>
+                <input type="text" id="first_name" name="first_name" placeholder="First Name"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required
+                    class="single-input-primary mt-4">
+            
+                <input type="text" id="last_name" name="last_name" placeholder="Last Name"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required
+                    class="single-input-primary mt-4">
+            
+                <input type="email" id="email" name="email" placeholder="Email address" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Email address'" required class="single-input-primary mt-4">
+            
+                <input type="number" id="age" name="age" placeholder="Age" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Age'" required class="single-input-primary mt-4">
+            
+                <input type="password" id="password" name="password" placeholder="Password"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" required
+                    class="single-input-primary mt-4">
+            
+                <input type="password" id="confirmPassword" placeholder="Confirm password"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'confirm Password'" required
+                    class="single-input-primary mt-4">
+            
+                <button id="btn_close_form" type="submit" class="genric-btn primary-border mt-4 mb-4">Register</button>
+            
+                </form>
+        </dialog>
 
         <!-- banner part start-->
         <section class="banner_part">
@@ -555,7 +582,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-3">
-                            <div class="single_footer_part">
+                            <div class="single_footer_part" id="contact">
                                 <h4>Contact Info</h4>
                                 <p>Address : Your address goes
                                     here, your demo address.
@@ -637,33 +664,16 @@
     </main>
 
     <!-- jquery plugins here-->
-    <script src="js/jquery-1.12.1.min.js"></script>
+    <script src="js_template/jquery-1.12.1.min.js"></script>
     <!-- popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="js_template/popper.min.js"></script>
     <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- easing js -->
-    <script src="js/jquery.magnific-popup.js"></script>
-    <!-- swiper js -->
-    <script src="js/swiper.min.js"></script>
-    <!-- swiper js -->
-    <script src="js/masonry.pkgd.js"></script>
-    <!-- particles js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- slick js -->
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
+    <script src="js_template/bootstrap.min.js"></script>
     <!-- Proyecto CoderHouse JS -->
-    <script src="registo-login.js"></script>
+    <script src="js/usuarios.js" type="module"></script>
+    <script src="js/planes.js" type="module"></script>
+    <script src="js/objet_constructor.js" type="module"></script>
+    <script src="js/registo-login.js" type="module"></script>
 
 </body>
 
