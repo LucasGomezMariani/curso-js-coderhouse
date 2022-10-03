@@ -13,7 +13,8 @@ class User {
 };
 
 class Plans {
-    constructor(nombre, precio, almacenamiento, cuentas, velocidad) {
+    constructor(nombre, precio, almacenamiento, cuentas, velocidad, id) {
+        this.id = id
         this.nombre = nombre
         this.precio = precio
         this.almacenamiento = almacenamiento
