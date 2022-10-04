@@ -1,6 +1,6 @@
 
-import { form } from "./index.js";
-import { User } from "./objet_constructor.js";
+import { form, registrarse } from "./index.js";
+import { UserRegister } from "./objet_constructor.js";
 import { UsersList } from "./usuarios.js";
 
 
@@ -25,29 +25,50 @@ const capturarDatos = (e) => {
     const email = formulario.get('email');
     const edad = formulario.get('age');
     const password = formulario.get('password');
+    const confirmPassword = formulario.get('confirmPassword');
+    
+    // Validacion de formularios vacios
+    if (nombre.length == 0 || apellido.length == 0 || edad.length == 0 || password.length == 0 ) {
+        alert(`Debes completar todos los campos`);
+        return;
+    }
+    // Validacion de password
+    if (confirmPassword != password) { 
+        alert('Las contraseñas no coinciden. Por favor ingrese la misma contraseña en ambos campos.');
+        password.onFocus()
+        return;
+    }
+
 
     // cargamos los datos capturados, dentro del molde de usuarios
-    const usuario = new User (nombre, apellido, email, edad, password);
-
+    const registroUsuario = new UserRegister(nombre, apellido, email, edad, password);
     // pusheamos el usuario dentro del array
-    UsersList.push(usuario);
+    UsersList.push(registroUsuario);
     console.log(...UsersList);
+    
+    
+    // Creamos el objeto "datos de login" el cual subiremos al storage
+    const loginUsuario = {nombre, email, password};
+    // pusheamos el usuario dentro del array
+    DatosLogin.push(loginUsuario);
+    console.log(...DatosLogin);
 
+    // Cerramos el modal
     form.close();
-    usuario.saludar();
+    registroUsuario.saludar();
 
     // Cargamos los datos del usuario en el session storaje en forma de JSON
-    sessionStorage.setItem('Usuarios', JSON.stringify(UsersList));
+    sessionStorage.setItem('UsuarioLogin', JSON.stringify(loginUsuario));
 
-    // Cambiamos el boton de registro
-    saludarUsuario(nombre);
+    // Cambiamos el boton de registro obteniendo el nombre desde el localStorage
+    saludarUsuario(JSON.parse(sessionStorage.getItem('UsuarioLogin'))?.nombre || 'Incognito');
 }
 
-// Cambiar boton
+// Funcion para cambiar boton
 const saludarUsuario = (nombre) => {
     const registerBtn = document.getElementById('registerBtn');
-    registerBtn.classList.remove('login')
-    registerBtn.innerText = `Bienvenidx ${nombre}`
+    registrarse.disabled = true;
+    registerBtn.innerText = `Bienvenidx ${nombre}`;
 }
 
 export { crearUsuario };

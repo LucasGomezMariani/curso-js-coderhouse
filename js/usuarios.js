@@ -1,4 +1,5 @@
 // Array de usuarios
 let UsersList = [];
+let DatosLogin = [];
 
-export { UsersList };
+export { UsersList, DatosLogin };

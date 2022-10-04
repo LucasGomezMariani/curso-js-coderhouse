@@ -1,5 +1,5 @@
-// Molde de usuarios
-class User {
+// Molde de registro de usuarios
+class UserRegister {
     constructor(nombre, apellido, email, edad, password) {
         this.nombre = nombre
         this.apellido = apellido
@@ -12,6 +12,7 @@ class User {
     }
 };
 
+// Molde de planes para armar más en el futuro
 class Plans {
     constructor(nombre, precio, almacenamiento, cuentas, velocidad, id) {
         this.id = id
@@ -24,4 +25,4 @@ class Plans {
 }
 
 
-export { User };
+export { UserRegister, Plans };

@@ -18,5 +18,4 @@ registrarse.onclick = () => {
     crearUsuario();
 }
 
-
-export { form };
+export { form, registrarse };
