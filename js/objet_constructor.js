@@ -8,7 +8,17 @@ class UserRegister {
         this.password = password
     }
     saludar() {
-        alert(`Bienvenidx ${this.nombre}, ahora podras disfrutar de la experiencia completa nuestra web :D`);
+        // alert(`Bienvenidx ${this.nombre}, ahora podras disfrutar de la experiencia completa nuestra web :D`);
+        Swal.fire({
+            icon: 'success',
+            title: `Bienvenidx ${this.nombre}, ahora podras disfrutar de la experiencia completa nuestra web :D`,
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
     }
 };
 
