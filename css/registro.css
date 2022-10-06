@@ -1,0 +1,12 @@
+#registerContainer{
+    max-width: 400px;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.popUpContent{
+    background-color: black;
+    padding: 0 25px;
+}
