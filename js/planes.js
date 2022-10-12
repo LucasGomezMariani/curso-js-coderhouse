@@ -1,33 +1,36 @@
-let planes = [
-    {
-        id: 1,
-        nombre: 'Bronce',
-        precio: 200,
-        almacenamiento: 2,
-        cuentas: 2,
-        velocidad: 2
-    },
-    {
-        id: 2,
-        nombre: 'Plata',
-        precio: 400,
-        almacenamiento: 4,
-        cuentas: 5,
-        velocidad: 4
-    },
-    {
-        id: 3,
-        nombre: 'Oro',
-        precio: 700,
-        almacenamiento: 10,
-        cuentas: 8,
-        velocidad: 10
-    }
+// let planes = [
+//     {
+//         id: 1,
+//         nombre: 'Bronce',
+//         precio: 200,
+//         almacenamiento: 2,
+//         cuentas: 2,
+//         velocidad: 2
+//     },
+//     {
+//         id: 2,
+//         nombre: 'Plata',
+//         precio: 400,
+//         almacenamiento: 4,
+//         cuentas: 5,
+//         velocidad: 4
+//     },
+//     {
+//         id: 3,
+//         nombre: 'Oro',
+//         precio: 700,
+//         almacenamiento: 10,
+//         cuentas: 8,
+//         velocidad: 10
+//     }
 
-];
+// ];
 
-const mostrarPlanes = (planes) => {
+const mostrarPlanes = async () => {
     const contenedorPlanes = document.getElementById('plansContainer');
+    
+    const response = await fetch('./api.json');
+    const planes = await response.json();
 
     planes.forEach (plan => {
         const div = document.createElement('div');
@@ -48,4 +51,4 @@ const mostrarPlanes = (planes) => {
     });
 };
 
-export { planes, mostrarPlanes };
+export { mostrarPlanes };

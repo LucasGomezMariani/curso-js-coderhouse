@@ -1,7 +1,7 @@
 import { crearUsuario } from "./registo-login.js";
-import { planes, mostrarPlanes } from "./planes.js";
+import { mostrarPlanes } from "./planes.js";
 document.addEventListener('DOMContentLoaded', () => {
-    mostrarPlanes(planes);
+    mostrarPlanes();
 })
 // El codigo se ejecuta si seleccionamos alguno de los botones de registro. 
 // Por ahora solo el boton del header esta configurado
