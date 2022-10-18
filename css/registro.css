@@ -1,5 +1,8 @@
 #registerContainer{
+    border-radius: 12px;
     max-width: 400px;
+    background: black;
+    border: solid white 1px;
 }
 
 dialog::backdrop {

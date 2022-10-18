@@ -1,31 +1,3 @@
-// let planes = [
-//     {
-//         id: 1,
-//         nombre: 'Bronce',
-//         precio: 200,
-//         almacenamiento: 2,
-//         cuentas: 2,
-//         velocidad: 2
-//     },
-//     {
-//         id: 2,
-//         nombre: 'Plata',
-//         precio: 400,
-//         almacenamiento: 4,
-//         cuentas: 5,
-//         velocidad: 4
-//     },
-//     {
-//         id: 3,
-//         nombre: 'Oro',
-//         precio: 700,
-//         almacenamiento: 10,
-//         cuentas: 8,
-//         velocidad: 10
-//     }
-
-// ];
-
 const mostrarPlanes = async () => {
     const contenedorPlanes = document.getElementById('plansContainer');
     
@@ -45,7 +17,7 @@ const mostrarPlanes = async () => {
                                     <li>${plan.cuentas} Cuentas</li>
                                     <li>${plan.almacenamiento}GB Almacenamiento</li>
                                 </ul>
-                                <button id="choosePlan${plan.nombre}" href="#" class="btn_2">Suscribirse</button>
+                                <button id="choosePlan${plan.nombre}" href="#" class="btn_2 btnSuscripcion">Suscribirse</button>
                             </div>`;
         contenedorPlanes.appendChild(div);
     });

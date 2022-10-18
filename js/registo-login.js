@@ -1,5 +1,5 @@
 
-import { form, registrarse } from "./index.js";
+import { form, registrarse, suscribirse } from "./index.js";
 import { UserRegister } from "./objet_constructor.js";
 import { UsersList, DatosLogin } from "./usuarios.js";
 

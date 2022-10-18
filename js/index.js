@@ -7,12 +7,33 @@ document.addEventListener('DOMContentLoaded', () => {
 // Por ahora solo el boton del header esta configurado
 
 // Capturamos los botones
-const registrarse = document.querySelector('.login')
+const registrarse = document.querySelector('.login');
+
 // Capturamos el contenedor
 const form = document.getElementById('registerContainer');
+
 registrarse.onclick = () => {
     form.showModal();
     crearUsuario();
 }
 
-export { form, registrarse };
+const btnSuscripcion = document.querySelectorAll('.btnSuscripcion')
+
+btnSuscripcion.forEach(boton => {
+    boton.addEventListener('click', suscribirse('hola'))
+})
+
+const suscribirse = (id) => {
+    Swal.fire({
+        icon: 'success',
+        title: `Te suscribiste al plan ${id}`,
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
+
+};
+export { form, registrarse, suscribirse };
