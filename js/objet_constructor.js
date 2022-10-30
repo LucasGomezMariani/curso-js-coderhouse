@@ -6,9 +6,8 @@ class UserRegister {
         this.email = email
         this.edad = edad
         this.password = password
-    }
+    };
     saludar() {
-        // alert(`Bienvenidx ${this.nombre}, ahora podras disfrutar de la experiencia completa nuestra web :D`);
         Swal.fire({
             icon: 'success',
             title: `Bienvenidx ${this.nombre}, ahora podras disfrutar de la experiencia completa nuestra web :D`,
@@ -18,8 +17,8 @@ class UserRegister {
             hideClass: {
               popup: 'animate__animated animate__fadeOutUp'
             }
-          })
-    }
+          });
+    };
 };
 
 // Molde de planes para armar más en el futuro
@@ -31,8 +30,8 @@ class Plans {
         this.almacenamiento = almacenamiento
         this.cuentas = cuentas
         this.velocidad = velocidad
-    }
-}
+    };
+};
 
 
 export { UserRegister, Plans };

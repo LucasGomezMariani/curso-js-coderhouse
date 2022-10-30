@@ -1,5 +1,5 @@
 
-import { form, registrarse, suscribirse } from "./index.js";
+import { form, registrarse } from "./index.js";
 import { UserRegister } from "./objet_constructor.js";
 import { UsersList, DatosLogin } from "./usuarios.js";
 
@@ -11,7 +11,7 @@ function crearUsuario() {
 
     // 2- Agregamos un event y cargamos los datos
     registerForm.addEventListener('submit', capturarDatos);
-}
+};
 
 //Funcion para cargar datos.
 const capturarDatos = (e) => {
@@ -35,30 +35,49 @@ const capturarDatos = (e) => {
             title: 'Oops...',
             text: 'Debes completar todos los campos',
           }).then((result) => {
-            result.isConfirmed &&     form.showModal();
+            result.isConfirmed && form.showModal();
           })       
         return;
-    }
+    };
     // Validacion de password
-    if (confirmPassword != password) {
-        
-        // alert('Las contraseñas no coinciden. Por favor ingrese la misma contraseña en ambos campos.');
-        password.onFocus()
+    if (password.length < 6 ) {
+        form.close();
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Las contraseña debe tener al menos 6 caracteres.',
+          }).then((result) => {
+            result.isConfirmed && form.showModal();
+          })       
         return;
-    }
+    };
+
+    if (confirmPassword !== password) {
+        form.close();
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Las contraseñas no coinciden',
+          }).then((result) => {
+            result.isConfirmed && form.showModal();
+          })       
+        return;
+    };
 
 
     // cargamos los datos capturados, dentro del molde de usuarios
     const registroUsuario = new UserRegister(nombre, apellido, email, edad, password);
+    
     // pusheamos el usuario dentro del array
     UsersList.push(registroUsuario);
     console.log(...UsersList);
 
 
     // Creamos el objeto "datos de login" el cual subiremos al storage
-    const loginUsuario = { nombre, email, password };
+    const datosDeLogin = { nombre, email, password };
+
     // pusheamos el usuario dentro del array
-    DatosLogin.push(loginUsuario);
+    DatosLogin.push(datosDeLogin);
     console.log(...DatosLogin);
 
     // Cerramos el modal
@@ -66,17 +85,17 @@ const capturarDatos = (e) => {
     registroUsuario.saludar();
 
     // Cargamos los datos del usuario en el session storaje en forma de JSON
-    sessionStorage.setItem('UsuarioLogin', JSON.stringify(loginUsuario));
+    sessionStorage.setItem('UsuarioLogin', JSON.stringify(datosDeLogin));
 
     // Cambiamos el boton de registro obteniendo el nombre desde el localStorage
     saludarUsuario(JSON.parse(sessionStorage.getItem('UsuarioLogin'))?.nombre || 'Incognito');
-}
+};
 
 // Funcion para cambiar boton
 const saludarUsuario = (nombre) => {
     const registerBtn = document.getElementById('registerBtn');
     registrarse.disabled = true;
     registerBtn.innerText = `Bienvenidx ${nombre}`;
-}
+};
 
 export { crearUsuario };
