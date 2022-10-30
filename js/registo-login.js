@@ -26,6 +26,8 @@ const capturarDatos = (e) => {
   const edad = formulario.get('age');
   const password = formulario.get('password');
   const confirmPassword = formulario.get('confirmPassword');
+
+  // Busca el valor en el array
   const includesEmail = UsersList.includes(email)
 
   // Validacion de formularios vacios
@@ -41,6 +43,12 @@ const capturarDatos = (e) => {
     return;
   };
 
+
+
+
+
+
+
   // Validacion de email
   if (!includesEmail) {
     form.close();
@@ -54,6 +62,13 @@ const capturarDatos = (e) => {
     return;
   }
 
+
+
+
+
+
+
+  
   // Validacion de password
   if (password.length < 6) {
     form.close();
