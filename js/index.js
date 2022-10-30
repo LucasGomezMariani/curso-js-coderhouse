@@ -1,5 +1,6 @@
 import { crearUsuario } from "./registo-login.js";
 import { mostrarPlanes } from "./planes.js";
+import { UsersList } from "./usuarios.js";
 document.addEventListener('DOMContentLoaded', () => {
     mostrarPlanes();
 });
@@ -16,5 +17,6 @@ registrarse.onclick = () => {
     form.showModal();
     crearUsuario();
 };
+
 
 export { form, registrarse };
