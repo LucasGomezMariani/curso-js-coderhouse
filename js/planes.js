@@ -35,6 +35,7 @@ window.addEventListener('load', () => {
 });
 
 const suscribirse = () => {
+    console.log('Te suscribiste con exito!');
     Swal.fire({
         icon: 'success',
         title: `Te suscribiste correctamente!!`,

@@ -3,7 +3,6 @@ import { form, registrarse } from "./index.js";
 import { UserRegister } from "./objet_constructor.js";
 import { DatosLogin, UsersList } from "./usuarios.js";
 
-
 //REGISTRO
 function crearUsuario() {
   // 1- capturamos el formulario
@@ -27,9 +26,6 @@ const capturarDatos = (e) => {
   const password = formulario.get('password');
   const confirmPassword = formulario.get('confirmPassword');
 
-  // Busca el valor en el array
-  const includesEmail = UsersList.includes(email)
-
   // Validacion de formularios vacios
   if (nombre.length == 0 || apellido.length == 0 || edad.length == 0 || password.length == 0 || email.length == 0) {
     form.close();
@@ -44,13 +40,13 @@ const capturarDatos = (e) => {
   };
 
 
-
-
-
-
-
   // Validacion de email
-  if (!includesEmail) {
+
+  // Busca el valor en el array
+  const emailList = UsersList.map(usuario => usuario.email)
+  const includesEmail = emailList.includes(email)
+
+  if (includesEmail) {
     form.close();
     Swal.fire({
       icon: 'error',
@@ -62,13 +58,6 @@ const capturarDatos = (e) => {
     return;
   }
 
-
-
-
-
-
-
-  
   // Validacion de password
   if (password.length < 6) {
     form.close();
@@ -127,8 +116,5 @@ const saludarUsuario = (nombre) => {
   registrarse.disabled = true;
   registerBtn.innerText = `Bienvenidx ${nombre}`;
 };
-const validarEmail= (email) => {
-}
-
 
 export { crearUsuario };

@@ -14,6 +14,7 @@ const registrarse = document.querySelector('.login');
 const form = document.getElementById('registerContainer');
 
 registrarse.onclick = () => {
+    alert('Para probar la validacion de que el mail ya fue utilizado, probar con \"asd@asd.com\"')
     form.showModal();
     crearUsuario();
 };
